@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoPills</title>
+</head>
+
+<body>
+    <header class="header header-bg">
+        <div class="container header__container">
+            <h1 class="header__title">PhotoPills</h1>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-link"><a href="#">Фоторедактор</a></li>
+                    <li class="header__nav-link"><a href="#">Рисование</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <section class="photoeditor">
+            <div class="container photoeditor__container">
+                <h2 class="photoeditor__title">Фоторедактор</h2>
+                <p class="photoeditor__text">Редактируй, сравнивай, скачивай... Сделай свои фото уникальными</p>
+                <div class="photoeditor__tools">
+                    <a class="btn photoeditor__tocomparer" href="#photocomparer">Сравнить</a>
+                    <div class="photomaker">
+                        <canvas class="photomaker__canvas"></canvas>
+                        <div class="photomaker__preload">
+                            <!-- <img src="img/testimg.jpg" alt=""> -->
+                        </div>
+                        <div class="photomaker__btns">
+                            <label class="photomaker__upload-label btn" for="photomaker__upload-input">Загрузите
+                                фото</label>
+                            <input class="photomaker__upload-input" id="photomaker__upload-input" type="file">
+                            <button class="photomaker__save-btn btn">Сохранить</button>
+                            <a class="photomaker__dowload btn disabled-link" href="#" download="yourImage">Скачать</a>
+                        </div>
+                        <details class="photomaker__readyfilters">
+                            <summary>Готовые фильтры</summary>
+                            <div class="readyfilters__navigation">
+                                <button class="readyfilters__navigation-left"></button>
+                                <button class="readyfilters__navigation-right"></button>
+                            </div>
+                            <div class="readyfilters__items">
+                                <figure class="normal readyfilter__btn">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Normal</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn filter-1977">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>1977</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn filter-aden">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>aden</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn filter-brooklyn">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Brooklyn</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn filter-amaro">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Amaro</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn filter-moon">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>moon</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-ashby">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Ashby</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-brannan">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Brannan</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-charmes">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>charmes</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-clarendon">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Clarendon</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-invert">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Invert</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-crema">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Crema</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-dogpatch">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Dogpatch</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-ginza">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Ginza</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-hefe">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Hefe</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-hudson">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Hudson</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-inkwell">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Inkwell</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-lofi">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Lo-fi</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-ludwig">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Ludwig</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-maven">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Maven</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-reyes">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Reyes</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-sierra">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Sierra</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-sutro">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Sutro</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-toaster">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Toaster</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-valencia">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Valencia</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-walden">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Walden</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-willow">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Willow</figcaption>
+                                </figure>
+                                <figure class="readyfilter__btn  filter-xpro-ii">
+                                    <img src="img/DogPic.jpg" alt="">
+                                    <figcaption>Xpro-ii</figcaption>
+                                </figure>
+                            </div>
+                        </details>
+                        <details class="photomaker__userfilters">
+                            <summary>Или настройте сами</summary>
+                            <div class="userfilters__inputs">
+                                <label for="photoeditor__blur ">Размытие:</label>
+                                <input type="range" class="photomaker__blur photoeditor__userf" id="photoeditor__blur"
+                                    value="0" min="0" max="20" name="blur">
+                                <label for="photoeditor__brightness">Яркость:</label>
+                                <input type="range" class="photomaker__brightness photoeditor__userf"
+                                    id="photoeditor__brightness" value="100" min="20" max="200" name="brightness">
+                                <label for="photoeditor__contrast">Контраст:</label>
+                                <input type="range" class="photomaker__contrast photoeditor__userf"
+                                    id="photoeditor__contrast" value="100" min="20" max="200" name="contrast">
+                                <label for="photoeditor__grayscale">Черно-белый:</label>
+                                <input type="range" class="photomaker__grayscale photoeditor__userf"
+                                    id="photoeditor__grayscale" value="0" min="0" max="100" name="grayscale">
+                                <label for="photoeditor__saturate">Насыщенность:</label>
+                                <input type="range" class="photomaker__saturate photoeditor__userf"
+                                    id="photoeditor__saturate" value="100" min="0" max="300" name="saturate">
+                                <label for="photoeditor__sepia">Сепия:</label>
+                                <input type="range" class="photomaker__sepia photoeditor__userf"
+                                    id="photoeditor__sepia" value="0" min="0" max="100" name="sepia">
+                            </div>
+                        </details>
+                    </div>
+                    <div class="photocomparer" id="photocomparer">
+                        <div class="photocomparer__separator"><span></span></div>
+                        <div class="photocomparer__origin-photo">
+                            <!-- <img src="img/testimg.jpg" alt=""> -->
+                        </div>
+                        <div class="photocomparer__modified-photo">
+                            <!-- <img src="img/testimg.jpg" alt=""> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
