@@ -15,7 +15,7 @@
             <nav class="header__nav">
                 <ul class="header__nav-list">
                     <li class="header__nav-link"><a href="#photoeditor">Фоторедактор</a></li>
-                    <li class="header__nav-link"><a href="#">Рисование</a></li>
+                    <li class="header__nav-link"><a href="#paint">Рисование</a></li>
                 </ul>
                 <button class="header__mobile"><span></span></button>
             </nav>
@@ -24,8 +24,8 @@
     <main class="main">
         <section class="photoeditor" id="photoeditor">
             <div class="container photoeditor__container">
-                <h2 class="photoeditor__title">Фоторедактор</h2>
-                <p class="photoeditor__text">Редактируй, сравнивай, скачивай... Сделай свои фото уникальными</p>
+                <h2 class="photoeditor__title section__title">Фоторедактор</h2>
+                <p class="photoeditor__text section__text">Редактируй, сравнивай, скачивай... Сделай свои фото уникальными</p>
                 <div class="photoeditor__tools">
                     <a class="btn photoeditor__tocomparer" href="#photocomparer">Сравнить</a>
                     <div class="photomaker">
@@ -191,6 +191,30 @@
                         <div class="photocomparer__modified-photo">
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="paint" id="paint">
+            <div class="container paint__container">
+                <h2 class="paint__title section__title">Рисоватор</h2>
+                <p class="paint__text section__text">Рисуй, креативь, сохраняй...Создавай новое искусство</p>
+                <div class="paint__body">
+                    <div class="paint__body__tools">
+                        <label class="color-label" for="paint__color">Цвет:</label>
+                        <input type="color" id="paint__color" class="paint__color">
+                        <label class="eraiser-label"><input class="paint__eraiser" type="checkbox"> Ластик</label>
+                        <label class="width-label" for="paint__width">Ширина Линии:</label>
+                        <select id="paint__width" class="paint__width">
+                            <option value="1">Тонкая</option>
+                            <option value="5">Средняя</option>
+                            <option value="10">Широкая</option>
+                        </select>
+                        <label class="color-label" for="paint__fill">Заливка: </label>
+                        <input type="color" class="paint__fill" id="paint__fill">
+                        <button class="paint__clear btn">Очистить</button>
+                        <a href="#" class="paint__download btn" download="">Скачать</a>
+                    </div>
+                    <canvas class="paint__canvas" height="350"></canvas>
                 </div>
             </div>
         </section>
