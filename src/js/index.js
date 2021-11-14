@@ -8,6 +8,11 @@ const photoMakerContaineer = document.querySelector('.photomaker__preload')
 const photoOriginContainer = document.querySelector('.photocomparer__origin-photo')
 const photoModifiedContainer = document.querySelector('.photocomparer__modified-photo')
 const photoCanvas = document.querySelector('.photomaker__canvas')
+const photoCanvasCtx = photoCanvas.getContext("2d");
+const userFilters = document.querySelectorAll('.photoeditor__userf')
+const userFiltersContainer = document.querySelector('.userfilters__inputs')
+const readyFitersContainer = document.querySelector('.readyfilters__items')
+const photoMakerDownload = document.querySelector('.photomaker__dowload')
 let isMove = false;
 document.addEventListener("click", (e) => {
   let targetEl = e.target;
@@ -16,6 +21,20 @@ document.addEventListener("click", (e) => {
   }
   if (targetEl.closest(".readyfilters__navigation-right")) {
     readyfilters.scrollBy(105, 0);
+  }
+  if (targetEl.closest('.photomaker__save-btn')) {
+    let filter = getComputedStyle(photoMakerContaineer).filter
+    let photo = document.querySelector('.photomaker__preload img')
+    if (photo) {
+    photoCanvasCtx.filter = filter
+    photoCanvasCtx.drawImage(photo, 0, 0)
+    photoMakerDownload.href = photoCanvas.toDataURL()
+    photoMakerDownload.classList.remove('disabled-link')
+    }
+  }
+  if (targetEl.closest('.header__mobile') || targetEl.closest('.header__nav-link')) {
+      document.querySelector('.header__mobile').classList.toggle('active-mobile')
+      document.querySelector('.header__nav-list').classList.toggle('active-mobile')
   }
 });
 
@@ -69,5 +88,30 @@ photoInput.addEventListener('change', function() {
             }
             filereader.readAsDataURL(file);
         }
+    }
+})
+userFiltersContainer.addEventListener('input', (e)=> {
+    if (e.target.closest('.photoeditor__userf')) {
+       let filter = Array.from(userFilters).map((item)=> {
+            if (item.name == 'blur') {
+                return `${item.name}(${item.value}px)`
+            }
+            else {
+                return `${item.name}(${item.value}%)`
+            }
+        }).join(' ')
+        photoMakerContaineer.style.filter = filter
+        photoModifiedContainer.style.filter = filter
+        photoMakerDownload.classList.add('disabled-link')
+    }
+}
+)
+readyFitersContainer.addEventListener('click', (e)=> {
+    let targetEl = e.target
+    if (targetEl.closest('.readyfilter__btn')) {
+        let filter = getComputedStyle(targetEl).filter
+        photoMakerContaineer.style.filter = filter
+        photoModifiedContainer.style.filter = filter
+        photoMakerDownload.classList.add('disabled-link')
     }
 })

@@ -14,14 +14,15 @@
             <h1 class="header__title">PhotoPills</h1>
             <nav class="header__nav">
                 <ul class="header__nav-list">
-                    <li class="header__nav-link"><a href="#">Фоторедактор</a></li>
+                    <li class="header__nav-link"><a href="#photoeditor">Фоторедактор</a></li>
                     <li class="header__nav-link"><a href="#">Рисование</a></li>
                 </ul>
+                <button class="header__mobile"><span></span></button>
             </nav>
         </div>
     </header>
     <main class="main">
-        <section class="photoeditor">
+        <section class="photoeditor" id="photoeditor">
             <div class="container photoeditor__container">
                 <h2 class="photoeditor__title">Фоторедактор</h2>
                 <p class="photoeditor__text">Редактируй, сравнивай, скачивай... Сделай свои фото уникальными</p>
@@ -30,7 +31,6 @@
                     <div class="photomaker">
                         <canvas class="photomaker__canvas"></canvas>
                         <div class="photomaker__preload">
-                            <!-- <img src="img/testimg.jpg" alt=""> -->
                         </div>
                         <div class="photomaker__btns">
                             <label class="photomaker__upload-label btn" for="photomaker__upload-input">Загрузите
@@ -187,10 +187,8 @@
                     <div class="photocomparer" id="photocomparer">
                         <div class="photocomparer__separator"><span></span></div>
                         <div class="photocomparer__origin-photo">
-                            <!-- <img src="img/testimg.jpg" alt=""> -->
                         </div>
                         <div class="photocomparer__modified-photo">
-                            <!-- <img src="img/testimg.jpg" alt=""> -->
                         </div>
                     </div>
                 </div>
