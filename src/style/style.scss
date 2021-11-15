@@ -466,7 +466,8 @@ body {
     }
   }
 }
-.paint__color, .paint__fill {
+.paint__color,
+.paint__fill {
   /* display: none; */
   visibility: hidden;
   width: 0;
@@ -486,4 +487,41 @@ body {
 }
 .paint__width {
   margin-right: 10px;
+}
+
+.footer {
+  min-height: 40px;
+  background: linear-gradient(222.26deg, #3b1d60 1.22%, #040d3e 106.28%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px -1px 5px rgb(90, 1, 255);
+}
+.footer__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #8476aa;
+}
+.footer__social {
+  display: flex;
+}
+.footer__social-item {
+  width: 28px;
+  height: 30px;
+  display: block;
+  margin-right: 10px;
+}
+.footer__instagram {
+  background: url(../img/instagramicon.svg) no-repeat;
+  background-size: contain;
+}
+.footer__github {
+  background: url(../img/github.svg) no-repeat;
+  background-size: contain;
+}
+.footer__linkedin {
+  background: url(../img/linkedin.svg) no-repeat;
+  background-size: contain;
 }

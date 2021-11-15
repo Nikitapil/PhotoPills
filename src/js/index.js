@@ -133,7 +133,9 @@ const paintColor = document.querySelector('.paint__color')
 const paintEraiser = document.querySelector('.paint__eraiser')
 paintDownload.href = paintCavas.toDataURL();
 let isDrawing = false;
-paintCavas.width = paintBody.offsetWidth;
+window.onload = function () {
+  paintCavas.width = paintBody.offsetWidth;
+}
 paintBody.addEventListener("click", (e) => {
   if (e.target.closest(".paint__clear")) {
     paintCtx.clearRect(0, 0, paintCavas.width, paintCavas.height);
