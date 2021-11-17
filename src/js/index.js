@@ -18,6 +18,8 @@ const userFiltersContainer = document.querySelector(".userfilters__inputs");
 const readyFitersContainer = document.querySelector(".readyfilters__items");
 const photoMakerDownload = document.querySelector(".photomaker__dowload");
 let isMove = false;
+
+
 document.addEventListener("click", (e) => {
   let targetEl = e.target;
   if (targetEl.closest(".readyfilters__navigation-left")) {
@@ -67,8 +69,11 @@ function movePhoto(e) {
       ".photocomparer__modified-photo"
     );
     let left = e.pageX - photocomparer.getBoundingClientRect().left;
+    console.log(left);
+    if (left > 0 && left < photocomparer.offsetWidth) {
     modifiedPhoto.style.width = left + "px";
     photoseparator.style.left = left + "px";
+    }
   }
 }
 
@@ -192,4 +197,32 @@ paintCavas.onmousemove = draw;
 paintCavas.touchstart = startDrawing;
 paintCavas.touchend = stopDrawing;
 paintCavas.touchcancel = stopDrawing;
-paintCavas.onmousemove = draw;
+paintCavas.touchmove = draw;
+
+//lang toggler
+const langElements = document.querySelectorAll('.multilang')
+const langToggler = document.querySelector('.header__lang-checkbox')
+
+langToggler.addEventListener('change', togglelang)
+
+function togglelang () {
+  langElements.forEach((item) => {
+    if (langToggler.checked) {
+      item.innerText = item.dataset.eng
+      localStorage.setItem('photolang', 'eng')
+    }
+    else {
+      item.innerText = item.dataset.ru
+      localStorage.setItem('photolang', 'ru')
+    }
+  })
+}
+if (localStorage.getItem('photolang')) {
+  if (localStorage.getItem('photolang') === 'eng') {
+    langToggler.checked = true
+  }
+  else {
+    langToggler.checked = false
+  }
+  togglelang ()
+}

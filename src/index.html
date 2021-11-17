@@ -14,8 +14,14 @@
             <h1 class="header__title">PhotoPills</h1>
             <nav class="header__nav">
                 <ul class="header__nav-list">
-                    <li class="header__nav-link"><a href="#photoeditor">Фоторедактор</a></li>
-                    <li class="header__nav-link"><a href="#paint">Рисование</a></li>
+                    <li class="header__lang">
+                        <input class="header__lang-checkbox" id="header__lang-checkbox" type="checkbox">
+                        <span class="header__lang-text">RU</span><label class="header__lang-toggler" for="header__lang-checkbox"></label><span class="header__lang-text">Eng</span>
+                    </li>
+                    <li class="header__nav-link"><a class="multilang" data-ru="Фоторедактор" data-eng="Photo editor"
+                            href="#photoeditor">Фоторедактор</a></li>
+                    <li class="header__nav-link"><a class="multilang" data-ru="Рисование" data-eng="Painting"
+                            href="#paint">Рисование</a></li>
                 </ul>
                 <button class="header__mobile"><span></span></button>
             </nav>
@@ -24,23 +30,26 @@
     <main class="main">
         <section class="photoeditor" id="photoeditor">
             <div class="container photoeditor__container">
-                <h2 class="photoeditor__title section__title">Фоторедактор</h2>
-                <p class="photoeditor__text section__text">Редактируй, сравнивай, скачивай... Сделай свои фото уникальными</p>
+                <h2 class="photoeditor__title section__title multilang" data-ru="Фоторедактор" data-eng="Photo editor">
+                    Фоторедактор</h2>
+                <p class="photoeditor__text section__text multilang"
+                    data-ru="Редактируй, сравнивай, скачивай... Сделай свои фото уникальными" data-eng="Edit, compare, download ... Make your photos unique">Редактируй, сравнивай,
+                    скачивай... Сделай свои фото уникальными</p>
                 <div class="photoeditor__tools">
-                    <a class="btn photoeditor__tocomparer" href="#photocomparer">Сравнить</a>
+                    <a class="btn photoeditor__tocomparer multilang" data-ru="Сравнить" data-eng="Compare" href="#photocomparer">Сравнить</a>
                     <div class="photomaker">
                         <canvas class="photomaker__canvas"></canvas>
                         <div class="photomaker__preload">
                         </div>
                         <div class="photomaker__btns">
-                            <label class="photomaker__upload-label btn" for="photomaker__upload-input">Загрузите
+                            <label class="photomaker__upload-label btn multilang" for="photomaker__upload-input" data-ru="Загрузите фото" data-eng="Upload a photo">Загрузите
                                 фото</label>
                             <input class="photomaker__upload-input" id="photomaker__upload-input" type="file">
-                            <button class="photomaker__save-btn btn">Сохранить</button>
-                            <a class="photomaker__dowload btn disabled-link" href="#" download="yourImage">Скачать</a>
+                            <button class="photomaker__save-btn btn multilang" data-eng="Save" data-ru="Сохранить">Сохранить</button>
+                            <a class="photomaker__dowload btn disabled-link multilang" href="#" download="yourImage" data-ru="Скачать" data-eng="Download">Скачать</a>
                         </div>
                         <details class="photomaker__readyfilters">
-                            <summary>Готовые фильтры</summary>
+                            <summary class="multilang" data-ru="Готовые фильтры" data-eng="Ready filters">Готовые фильтры</summary>
                             <div class="readyfilters__navigation">
                                 <button class="readyfilters__navigation-left"></button>
                                 <button class="readyfilters__navigation-right"></button>
@@ -161,26 +170,26 @@
                             </div>
                         </details>
                         <details class="photomaker__userfilters">
-                            <summary>Или настройте сами</summary>
+                            <summary class="multilang" data-eng="User filters" data-ru="Или настройте сами">Или настройте сами</summary>
                             <div class="userfilters__inputs">
-                                <label for="photoeditor__blur ">Размытие:</label>
+                                <label for="photoeditor__blur" class="multilang" data-ru="Размытие:" data-eng="Blur:">Размытие:</label>
                                 <input type="range" class="photomaker__blur photoeditor__userf" id="photoeditor__blur"
                                     value="0" min="0" max="20" name="blur">
-                                <label for="photoeditor__brightness">Яркость:</label>
+                                <label for="photoeditor__brightness" class="multilang" data-eng="Brightness:" data-ru="Яркость:">Яркость:</label>
                                 <input type="range" class="photomaker__brightness photoeditor__userf"
                                     id="photoeditor__brightness" value="100" min="20" max="200" name="brightness">
-                                <label for="photoeditor__contrast">Контраст:</label>
+                                <label for="photoeditor__contrast" class="multilang" data-ru="Контраст:" data-eng="Contrast:">Контраст:</label>
                                 <input type="range" class="photomaker__contrast photoeditor__userf"
                                     id="photoeditor__contrast" value="100" min="20" max="200" name="contrast">
-                                <label for="photoeditor__grayscale">Черно-белый:</label>
+                                <label for="photoeditor__grayscale" class="multilang" data-ru="Черно-белый:" data-eng="Grayscale:">Черно-белый:</label>
                                 <input type="range" class="photomaker__grayscale photoeditor__userf"
                                     id="photoeditor__grayscale" value="0" min="0" max="100" name="grayscale">
-                                <label for="photoeditor__saturate">Насыщенность:</label>
+                                <label for="photoeditor__saturate" class="multilang" data-ru="Насыщенность:" data-eng="Saturation:">Насыщенность:</label>
                                 <input type="range" class="photomaker__saturate photoeditor__userf"
                                     id="photoeditor__saturate" value="100" min="0" max="300" name="saturate">
-                                <label for="photoeditor__sepia">Сепия:</label>
-                                <input type="range" class="photomaker__sepia photoeditor__userf"
-                                    id="photoeditor__sepia" value="0" min="0" max="100" name="sepia">
+                                <label for="photoeditor__sepia" class="multilang" data-ru="Сепия:" data-eng="Sepia:">Сепия:</label>
+                                <input type="range" class="photomaker__sepia photoeditor__userf" id="photoeditor__sepia"
+                                    value="0" min="0" max="100" name="sepia">
                             </div>
                         </details>
                     </div>
@@ -196,23 +205,24 @@
         </section>
         <section class="paint" id="paint">
             <div class="container paint__container">
-                <h2 class="paint__title section__title">Рисоватор</h2>
-                <p class="paint__text section__text">Рисуй, креативь, сохраняй...Создавай новое искусство</p>
+                <h2 class="paint__title section__title multilang" data-ru="Рисоватор" data-eng="Painter">Рисоватор</h2>
+                <p class="paint__text section__text multilang" data-ru="Рисуй, креативь, сохраняй...Создавай новое искусство" data-eng="Draw, create, save ... Create new art">Рисуй, креативь, сохраняй...Создавай новое искусство</p>
                 <div class="paint__body">
                     <div class="paint__body__tools">
-                        <label class="color-label" for="paint__color">Цвет:</label>
+                        <label class="color-label multilang" for="paint__color" data-ru="Цвет:" data-eng="Color:">Цвет:</label>
                         <input type="color" id="paint__color" class="paint__color">
-                        <label class="eraiser-label"><input class="paint__eraiser" type="checkbox"> Ластик</label>
-                        <label class="width-label" for="paint__width">Ширина Линии:</label>
+                        <input class="paint__eraiser" type="checkbox" id="eraser">
+                        <label for="eraser" class="eraiser-label multilang" data-ru="Ластик" data-eng="Eraser"> Ластик</label>
+                        <label class="width-label multilang" for="paint__width" data-ru="Ширина Линии:" data-eng="Line width">Ширина Линии:</label>
                         <select id="paint__width" class="paint__width">
-                            <option value="1">Тонкая</option>
-                            <option value="5">Средняя</option>
-                            <option value="10">Широкая</option>
+                            <option class="multilang" value="1" data-ru="Тонкая" data-eng="Thin">Тонкая</option>
+                            <option class="multilang" value="5" data-ru="Средняя" data-eng="Medium">Средняя</option>
+                            <option class="multilang" value="10" data-ru="Широкая" data-eng="Big">Широкая</option>
                         </select>
-                        <label class="color-label" for="paint__fill">Заливка: </label>
+                        <label class="color-label multilang" data-ru="Заливка: " data-eng="Fill: " for="paint__fill">Заливка: </label>
                         <input type="color" class="paint__fill" id="paint__fill">
-                        <button class="paint__clear btn">Очистить</button>
-                        <a href="#" class="paint__download btn" download="">Скачать</a>
+                        <button class="paint__clear btn multilang" data-ru="Очистить" data-eng="Clear">Очистить</button>
+                        <a href="#" class="paint__download btn multilang" download="" data-ru="Скачать" data-eng="Download">Скачать</a>
                     </div>
                     <canvas class="paint__canvas" height="350"></canvas>
                 </div>
