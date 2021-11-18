@@ -18,6 +18,33 @@ const userFiltersContainer = document.querySelector(".userfilters__inputs");
 const readyFitersContainer = document.querySelector(".readyfilters__items");
 const photoMakerDownload = document.querySelector(".photomaker__dowload");
 let isMove = false;
+let isMobile = {
+  Android: function () {
+      return navigator.userAgent.match(/Android/i);
+  },
+  BlackBerry: function () {
+      return navigator.userAgent.match(/BlackBerry/i);
+  },
+  iOS: function () {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+  },
+  Opera: function () {
+      return navigator.userAgent.match(/Opera Mini/i);
+  },
+  Windows: function () {
+      return navigator.userAgent.match(/IEMobile/i);
+  },
+  any: function () {
+      return (
+              isMobile.Android()
+              || isMobile.BlackBerry()
+              || isMobile.iOS()
+              || isMobile.Opera()
+              || isMobile.Windows()
+              );
+  }
+};
+
 
 document.addEventListener("click", (e) => {
   let targetEl = e.target;
@@ -64,11 +91,14 @@ photocomparer.addEventListener("mousemove", movePhoto);
 photocomparer.addEventListener("touchmove", movePhoto);
 function movePhoto(e) {
   if (isMove) {
+    e.preventDefault()
     const modifiedPhoto = document.querySelector(
       ".photocomparer__modified-photo"
     );
     let left = e.pageX - photocomparer.getBoundingClientRect().left;
-    console.log(left);
+    if (isMobile.any()) {
+      left = e.touches[0].pageX - photocomparer.getBoundingClientRect().left;
+    }
     if (left > 0 && left < photocomparer.offsetWidth) {
       modifiedPhoto.style.width = left + "px";
       photoseparator.style.left = left + "px";
@@ -171,16 +201,28 @@ paintBody.addEventListener("change", (e) => {
 function startDrawing(e) {
   isDrawing = true;
   paintCtx.beginPath();
+  let coordsX = e.pageX - paintCavas.offsetLeft
+  let coordsY = e.pageY - paintCavas.offsetTop
+  if (isMobile.any()) {
+    coordsX = e.touches[0].pageX - paintCavas.offsetLeft
+    coordsY = e.touches[0].pageY - paintCavas.offsetTop
+  }
   paintCtx.moveTo(
-    e.pageX - paintCavas.offsetLeft,
-    e.pageY - paintCavas.offsetTop
+    coordsX,
+    coordsY
   );
 }
 function draw(e) {
+  e.preventDefault();
+  
   if (isDrawing == true) {
-    let x = e.pageX - paintCavas.offsetLeft;
-    let y = e.pageY - paintCavas.offsetTop;
-    paintCtx.lineTo(x, y);
+    let coordsX = e.pageX - paintCavas.offsetLeft;
+    let coordsY = e.pageY - paintCavas.offsetTop;
+    if (isMobile.any()) {
+      coordsX = e.touches[0].pageX - paintCavas.offsetLeft
+      coordsY = e.touches[0].pageY - paintCavas.offsetTop
+    }
+    paintCtx.lineTo(coordsX, coordsY);
     paintCtx.stroke();
   }
 }
@@ -193,10 +235,10 @@ paintCavas.onmouseup = stopDrawing;
 paintCavas.onmouseout = stopDrawing;
 paintCavas.onmousemove = draw;
 
-paintCavas.touchstart = startDrawing;
-paintCavas.touchend = stopDrawing;
-paintCavas.touchcancel = stopDrawing;
-paintCavas.touchmove = draw;
+paintCavas.ontouchstart = startDrawing;
+paintCavas.ontouchend = stopDrawing;
+paintCavas.ontouchcancel = stopDrawing;
+paintCavas.ontouchmove = draw;
 
 //lang toggler
 const langElements = document.querySelectorAll(".multilang");
