@@ -19,7 +19,6 @@ const readyFitersContainer = document.querySelector(".readyfilters__items");
 const photoMakerDownload = document.querySelector(".photomaker__dowload");
 let isMove = false;
 
-
 document.addEventListener("click", (e) => {
   let targetEl = e.target;
   if (targetEl.closest(".readyfilters__navigation-left")) {
@@ -71,8 +70,8 @@ function movePhoto(e) {
     let left = e.pageX - photocomparer.getBoundingClientRect().left;
     console.log(left);
     if (left > 0 && left < photocomparer.offsetWidth) {
-    modifiedPhoto.style.width = left + "px";
-    photoseparator.style.left = left + "px";
+      modifiedPhoto.style.width = left + "px";
+      photoseparator.style.left = left + "px";
     }
   }
 }
@@ -134,13 +133,13 @@ const paintCavas = document.querySelector(".paint__canvas");
 const paintCtx = paintCavas.getContext("2d");
 const paintBody = document.querySelector(".paint__body");
 const paintDownload = document.querySelector(".paint__download");
-const paintColor = document.querySelector('.paint__color')
-const paintEraiser = document.querySelector('.paint__eraiser')
+const paintColor = document.querySelector(".paint__color");
+const paintEraiser = document.querySelector(".paint__eraiser");
 paintDownload.href = paintCavas.toDataURL();
 let isDrawing = false;
 window.onload = function () {
   paintCavas.width = paintBody.offsetWidth;
-}
+};
 paintBody.addEventListener("click", (e) => {
   if (e.target.closest(".paint__clear")) {
     paintCtx.clearRect(0, 0, paintCavas.width, paintCavas.height);
@@ -156,17 +155,17 @@ paintBody.addEventListener("change", (e) => {
   }
   if (e.target.closest(".paint__color")) {
     if (paintEraiser.checked) {
-        paintCtx.strokeStyle = 'white';
-      } else {
-        paintCtx.strokeStyle = paintColor.value;
-      }
+      paintCtx.strokeStyle = "white";
+    } else {
+      paintCtx.strokeStyle = paintColor.value;
+    }
   }
   if (e.target.closest(".paint__eraiser")) {
     if (e.target.checked) {
-        paintCtx.strokeStyle = 'white';
-      } else {
-        paintCtx.strokeStyle = paintColor.value;
-      }
+      paintCtx.strokeStyle = "white";
+    } else {
+      paintCtx.strokeStyle = paintColor.value;
+    }
   }
 });
 function startDrawing(e) {
@@ -200,29 +199,28 @@ paintCavas.touchcancel = stopDrawing;
 paintCavas.touchmove = draw;
 
 //lang toggler
-const langElements = document.querySelectorAll('.multilang')
-const langToggler = document.querySelector('.header__lang-checkbox')
+const langElements = document.querySelectorAll(".multilang");
+const langToggler = document.querySelector(".header__lang-checkbox");
 
-langToggler.addEventListener('change', togglelang)
+langToggler.addEventListener("change", togglelang);
 
-function togglelang () {
+function togglelang() {
   langElements.forEach((item) => {
     if (langToggler.checked) {
-      item.innerText = item.dataset.eng
-      localStorage.setItem('photolang', 'eng')
+      item.innerText = item.dataset.eng;
+      localStorage.setItem("photolang", "eng");
+    } else {
+      item.innerText = item.dataset.ru;
+      localStorage.setItem("photolang", "ru");
     }
-    else {
-      item.innerText = item.dataset.ru
-      localStorage.setItem('photolang', 'ru')
-    }
-  })
+  });
 }
-if (localStorage.getItem('photolang')) {
-  if (localStorage.getItem('photolang') === 'eng') {
-    langToggler.checked = true
+
+if (localStorage.getItem("photolang")) {
+  if (localStorage.getItem("photolang") === "eng") {
+    langToggler.checked = true;
+  } else {
+    langToggler.checked = false;
   }
-  else {
-    langToggler.checked = false
-  }
-  togglelang ()
+  togglelang();
 }
