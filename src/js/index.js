@@ -144,7 +144,7 @@ userFiltersContainer.addEventListener("input", (e) => {
   if (e.target.closest(".photoeditor__userf")) {
     let filter = Array.from(userFilters)
       .map((item) => {
-        if (item.name == "blur") {
+        if (item.name === "blur") {
           return `${item.name}(${item.value}px)`;
         } else {
           return `${item.name}(${item.value}%)`;
@@ -223,7 +223,7 @@ function startDrawing(e) {
 function draw(e) {
   e.preventDefault();
 
-  if (isDrawing == true) {
+  if (isDrawing === true) {
     let coordsX = e.pageX - paintCavas.offsetLeft;
     let coordsY = e.pageY - paintCavas.offsetTop;
     if (isMobile.any()) {
@@ -267,21 +267,22 @@ function togglelang() {
 }
 
 if (localStorage.getItem("photolang")) {
-  if (localStorage.getItem("photolang") === "eng") {
-    langToggler.checked = true;
-  } else {
-    langToggler.checked = false;
-  }
+  langToggler.checked = localStorage.getItem("photolang") === "eng";
   togglelang();
 }
 
 
-let gradientAngle = 0
-let firstColorPercent = 0
-let secondColorPercent = 0
-let  gradientColor = 'black'
+
 const gradientBtn = document.querySelector('.create-grdient')
 gradientBtn.addEventListener('click', () => {
+  let photo = document.querySelector(".photomaker__preload img");
+  if (!photo) {
+    return
+  }
+  let gradientAngle = 0
+  let firstColorPercent = 0
+  let secondColorPercent = 0
+  let  gradientColor = 'black'
   const degShadow = document.querySelector('.deg-shadow')
   degShadow.classList.toggle('hidden')
   let gradientBlock = document.querySelector('.photomaker__gradient')
@@ -291,30 +292,23 @@ gradientBtn.addEventListener('click', () => {
     photoMakerContaineer.append(gradientBlock)
     gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
   }
-  const roundInp = document.querySelector('.deg-shadow__round')
-  roundInp.addEventListener('input', () => {
-    gradientAngle = roundInp.value
-    gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
-
-  })
-  const gradientSizeFirst = document.querySelector('.deg-shadow__size-first')
-  gradientSizeFirst.addEventListener('input', () => {
-    firstColorPercent = gradientSizeFirst.value
-    gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
-
-  })
-  const gradientSizeSecond = document.querySelector('.deg-shadow__size-second')
-  gradientSizeSecond.addEventListener('input', () => {
-    secondColorPercent = gradientSizeSecond.value
-    gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
-  })
-  const gradientColorInput = document.querySelector('.deg-shadow__color')
-  gradientColorInput.addEventListener('input', () => {
-    gradientColor = gradientColorInput.value
+  degShadow.addEventListener('input', (e) => {
+    const targetEl = e.target
+    if(targetEl.closest('.deg-shadow__round')) {
+      gradientAngle = targetEl.value
+    }
+    if(targetEl.closest('.deg-shadow__size-first')) {
+      firstColorPercent = targetEl.value
+    }
+    if(targetEl.closest('.deg-shadow__size-second')) {
+      secondColorPercent = targetEl.value
+    }
+    if(targetEl.closest('.deg-shadow__color')) {
+      gradientColor = targetEl.value
+    }
     gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
   })
     }
-
 )
 
 
