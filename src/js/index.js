@@ -60,13 +60,16 @@ document.addEventListener("click", (e) => {
     let photo = document.querySelector(".photomaker__preload img");
     if (photo) {
       html2canvas(photoMakerContaineer).then(canvas => {
-        photoMakerDownload.href = canvas.toDataURL();
-        photoMakerDownload.classList.remove("disabled-link");
+        photo.src = canvas.toDataURL()
+        photo.onload = () => {
+          photoCanvas.width = photo.naturalWidth;
+          photoCanvas.height = photo.naturalHeight;
+          photoCanvasCtx.filter = filter;
+          photoCanvasCtx.drawImage(photo, 0, 0);
+          photoMakerDownload.href = photoCanvas.toDataURL();
+          photoMakerDownload.classList.remove("disabled-link");
+        }
       });
-      // photoCanvasCtx.filter = filter;
-      // photoCanvasCtx.drawImage(photo, 0, 0);
-      // photoMakerDownload.href = photoCanvas.toDataURL();
-      // photoMakerDownload.classList.remove("disabled-link");
     }
   }
   if (
