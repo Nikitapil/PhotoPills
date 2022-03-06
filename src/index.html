@@ -40,6 +40,7 @@
                     <div class="photomaker">
                         <canvas class="photomaker__canvas"></canvas>
                         <div class="photomaker__preload">
+                            <div class="photomaker__text">Test text</div>
                         </div>
                         <div class="photomaker__btns">
                             <label class="photomaker__upload-label btn multilang" for="photomaker__upload-input" data-ru="Загрузите фото" data-eng="Upload a photo">Загрузите
@@ -207,6 +208,10 @@
                                     <label for="deg-shadow__size-second" class="multilang" data-ru="Размер прозрачной части" data-eng="Size of transparent part">Размер прозрачной части</label>
                                     <input id="deg-shadow__size-second" type="range" min="0" max="100" step="1" class="deg-shadow__size-second"
                                            value="0">
+                                </div>
+                                <button class="create-text btn multilang" data-eng="Create text" data-ru="Создать текст">Создать текст</button>
+                                <div class="additional-filters__text-creator text-creator hidden">
+                                    <input type="text" placeholder="Введите текст">
                                 </div>
                             </div>
                         </details>

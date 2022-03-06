@@ -586,12 +586,14 @@ body {
 .additional-filters__content {
   padding: 15px;
 }
-.create-grdient {
+.create-grdient, .create-text {
 background: #4848e8;
   &:hover {
     background: #1492d6;
     box-shadow: 0 0 10px 0.5px #1492d6;
   }
+
+  margin-bottom: 15px;
 }
 .deg-shadow {
   display: flex;
@@ -613,4 +615,14 @@ background: #4848e8;
 }
 .hidden {
   display: none;
+}
+.photomaker__text-content {
+  user-select: none;
+}
+.photomaker__text {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }

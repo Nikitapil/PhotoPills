@@ -114,6 +114,43 @@ function movePhoto(e) {
   }
 }
 
+
+const photomakerText = document.querySelector('.photomaker__text')
+let isTextMove = false
+photomakerText.addEventListener("mousedown", () => {
+  console.log('stars')
+  isTextMove = true;
+});
+photomakerText.addEventListener("mouseup", () => {
+  isTextMove = false;
+});
+photomakerText.addEventListener("touchstart", () => {
+  isTextMove = true;
+});
+photomakerText.addEventListener("touchend", () => {
+  isTextMove = false;
+});
+photoMakerContaineer.addEventListener("mousemove", moveText);
+photoMakerContaineer.addEventListener("touchmove", moveText);
+function moveText(e) {
+
+  if (isTextMove) {
+    e.preventDefault()
+    let left = e.pageX - photoMakerContaineer.getBoundingClientRect().left;
+    let top = e.pageY - photoMakerContaineer.getBoundingClientRect().top;
+    if (isMobile.any()) {
+      left = e.touches[0].pageX - photoMakerContaineer.getBoundingClientRect().left;
+      top = e.touches[0].pageY - photoMakerContaineer.getBoundingClientRect().top;
+    }
+    if (left > 0 && left < photoMakerContaineer.offsetWidth && top > 0 && top < photoMakerContaineer.offsetHeight - 20) {
+      photomakerText.style.left = left + "px";
+      photomakerText.style.top = top + "px";
+    }
+    console.log(left)
+  }
+}
+
+
 photoInput.addEventListener("change", function () {
   if (this.files) {
     let file = this.files[0];
@@ -311,4 +348,11 @@ gradientBtn.addEventListener('click', () => {
     }
 )
 
+
+const createTextBtn = document.querySelector('.create-text')
+createTextBtn.addEventListener('click', () => {
+  const textCreator = document.querySelector('.text-creator')
+  textCreator.classList.toggle('hidden')
+  let textnum
+})
 
