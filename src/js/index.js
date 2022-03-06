@@ -60,7 +60,8 @@ document.addEventListener("click", (e) => {
     let photo = document.querySelector(".photomaker__preload img");
     if (photo) {
       html2canvas(photoMakerContaineer, {
-        allowTaint: true
+        allowTaint: true,
+        scale: 2
       }).then(canvas => {
         photo.src = canvas.toDataURL()
         photo.onload = () => {
