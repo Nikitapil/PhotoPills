@@ -34,12 +34,9 @@ module.exports = {
     }),
     new CopyWebpackPlugin ({
       patterns: [
-        { from: path.resolve(__dirname, 'src/img'), 
+        { from: path.resolve(__dirname, 'src/img'),
           to: path.resolve(__dirname, 'dist/img')
-        },
-        { from: path.resolve(__dirname, 'src/fonts'), 
-          to: path.resolve(__dirname, 'dist/fonts')
-        },
+        }
       ]
     })
   ],
@@ -81,7 +78,7 @@ module.exports = {
                         name: '[name].[ext]',
                         outputPath: 'img/',
                         publicPath:'img/'
-                    }  
+                    }
                   }]
       },
       {
@@ -92,7 +89,7 @@ module.exports = {
                 name: '[name].[ext]',
                 outputPath: 'fonts/',
                 publicPath:'fonts/'
-            }  
+            }
           }]
       }
     ],

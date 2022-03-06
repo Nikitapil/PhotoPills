@@ -192,6 +192,24 @@
                                     value="0" min="0" max="100" name="sepia">
                             </div>
                         </details>
+                        <details class="photomaker__additional-filters additional-filters">
+                            <summary class="multilang" data-eng="Additional features" data-ru="Дополнительные возможности">Дополнительные возможности</summary>
+                            <div class="additional-filters__content">
+                                <button class="create-grdient btn multilang" data-eng="Create gradient" data-ru="Создать градиент">Создать градиент</button>
+                                <div class="additional-filters__deg-shadow, deg-shadow hidden">
+                                    <label class="color-label multilang deg-shadow__color-label" for="deg-shadow__color" data-ru="Цвет:" data-eng="Color:">Цвет:</label>
+                                    <input type="color" class="deg-shadow__color hidden" id="deg-shadow__color">
+                                    <label for="deg-shadow__round" class="multilang" data-ru="Угол" data-eng="Angle">Угол</label>
+                                    <input id="deg-shadow__round" type="range" min="0" max="360" step="1" class="deg-shadow__round" value="0">
+                                    <label for="deg-shadow__size-first" class="multilang" data-ru="Размер Цвета" data-eng="Size of color">Размер Цвета</label>
+                                    <input id="deg-shadow__size-first" type="range" min="0" max="100" step="1" class="deg-shadow__size-first"
+                                           value="0">
+                                    <label for="deg-shadow__size-second" class="multilang" data-ru="Размер прозрачной части" data-eng="Size of transparent part">Размер прозрачной части</label>
+                                    <input id="deg-shadow__size-second" type="range" min="0" max="100" step="1" class="deg-shadow__size-second"
+                                           value="0">
+                                </div>
+                            </div>
+                        </details>
                     </div>
                     <div class="photocomparer" id="photocomparer">
                         <div class="photocomparer__separator"><span></span></div>

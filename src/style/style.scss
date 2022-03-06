@@ -229,6 +229,7 @@ body {
   min-height: 300px;
   background-color: white;
   margin-bottom: 15px;
+  position: relative;
   img {
     max-width: 100%;
   }
@@ -275,7 +276,8 @@ body {
   }
 }
 .photomaker__readyfilters,
-.photomaker__userfilters {
+.photomaker__userfilters,
+.photomaker__additional-filters {
   border: 1px solid #8476aa;
   border-radius: 15px;
   position: relative;
@@ -573,4 +575,42 @@ body {
 
 .paint__clear {
   margin-right: 8px;
+}
+.photomaker__gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.additional-filters__content {
+  padding: 15px;
+}
+.create-grdient {
+background: #4848e8;
+  &:hover {
+    background: #1492d6;
+    box-shadow: 0 0 10px 0.5px #1492d6;
+  }
+}
+.deg-shadow {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 5px;
+  label {
+    color: #bbbaba;
+    align-self: center;
+    margin-bottom: -5px;
+  }
+}
+.deg-shadow__color-label {
+  color: #bbbaba;
+}
+.deg-shadow__color-label {
+  align-self: flex-start !important;
+  line-height: 140%;
+}
+.hidden {
+  display: none;
 }

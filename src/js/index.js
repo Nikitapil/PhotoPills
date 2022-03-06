@@ -1,4 +1,5 @@
 import "../style/style.scss";
+import html2canvas from "html2canvas";
 
 const readyfilters = document.querySelector(".readyfilters__items");
 const photocomparer = document.querySelector(".photocomparer");
@@ -58,10 +59,14 @@ document.addEventListener("click", (e) => {
     let filter = getComputedStyle(photoMakerContaineer).filter;
     let photo = document.querySelector(".photomaker__preload img");
     if (photo) {
-      photoCanvasCtx.filter = filter;
-      photoCanvasCtx.drawImage(photo, 0, 0);
-      photoMakerDownload.href = photoCanvas.toDataURL();
-      photoMakerDownload.classList.remove("disabled-link");
+      html2canvas(photoMakerContaineer).then(canvas => {
+        photoMakerDownload.href = canvas.toDataURL();
+        photoMakerDownload.classList.remove("disabled-link");
+      });
+      // photoCanvasCtx.filter = filter;
+      // photoCanvasCtx.drawImage(photo, 0, 0);
+      // photoMakerDownload.href = photoCanvas.toDataURL();
+      // photoMakerDownload.classList.remove("disabled-link");
     }
   }
   if (
@@ -214,7 +219,7 @@ function startDrawing(e) {
 }
 function draw(e) {
   e.preventDefault();
-  
+
   if (isDrawing == true) {
     let coordsX = e.pageX - paintCavas.offsetLeft;
     let coordsY = e.pageY - paintCavas.offsetTop;
@@ -266,3 +271,47 @@ if (localStorage.getItem("photolang")) {
   }
   togglelang();
 }
+
+
+let gradientAngle = 0
+let firstColorPercent = 0
+let secondColorPercent = 0
+let  gradientColor = 'black'
+const gradientBtn = document.querySelector('.create-grdient')
+gradientBtn.addEventListener('click', () => {
+  const degShadow = document.querySelector('.deg-shadow')
+  degShadow.classList.toggle('hidden')
+  let gradientBlock = document.querySelector('.photomaker__gradient')
+  if (!gradientBlock) {
+    gradientBlock = document.createElement('div')
+    gradientBlock.classList.add('photomaker__gradient')
+    photoMakerContaineer.append(gradientBlock)
+    gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
+  }
+  const roundInp = document.querySelector('.deg-shadow__round')
+  roundInp.addEventListener('input', () => {
+    gradientAngle = roundInp.value
+    gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
+
+  })
+  const gradientSizeFirst = document.querySelector('.deg-shadow__size-first')
+  gradientSizeFirst.addEventListener('input', () => {
+    firstColorPercent = gradientSizeFirst.value
+    gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
+
+  })
+  const gradientSizeSecond = document.querySelector('.deg-shadow__size-second')
+  gradientSizeSecond.addEventListener('input', () => {
+    secondColorPercent = gradientSizeSecond.value
+    gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
+  })
+  const gradientColorInput = document.querySelector('.deg-shadow__color')
+  gradientColorInput.addEventListener('input', () => {
+    gradientColor = gradientColorInput.value
+    gradientBlock.style.background = `linear-gradient(${gradientAngle}deg, ${gradientColor} ${firstColorPercent}% , transparent ${secondColorPercent}%)`
+  })
+    }
+
+)
+
+
