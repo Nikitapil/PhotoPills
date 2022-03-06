@@ -59,7 +59,9 @@ document.addEventListener("click", (e) => {
     let filter = getComputedStyle(photoMakerContaineer).filter;
     let photo = document.querySelector(".photomaker__preload img");
     if (photo) {
-      html2canvas(photoMakerContaineer).then(canvas => {
+      html2canvas(photoMakerContaineer, {
+        allowTaint: true
+      }).then(canvas => {
         photo.src = canvas.toDataURL()
         photo.onload = () => {
           photoCanvas.width = photo.naturalWidth;
